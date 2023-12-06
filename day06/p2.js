@@ -1,0 +1,24 @@
+const fs = require("fs");
+
+const data = fs.readFileSync("./input.txt", "utf8");
+const lines = data.split("\n");
+
+console.time("executionTime");
+
+let sum = 0;
+
+const time = lines[0].match(/\d+/g).join("");
+const distance = lines[1].match(/\d+/g).join("");
+
+for (let l = 0; l < time; l++) {
+  const newDistance = (time - l) * l;
+
+  if (newDistance > distance) {
+    sum += 1;
+  }
+}
+
+// TODO: find a better solution
+console.timeEnd("executionTime");
+
+console.log(sum);
